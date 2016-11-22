@@ -7,3 +7,6 @@ services:
 
 install:
   - docker build -t docker-bigdata:latest .
+
+script:
+  - docker images
