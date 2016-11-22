@@ -1,5 +1,7 @@
-# docker-bigdata
+# docker-bigdata [![Build Status](https://travis-ci.org/tataopop/docker-bigdata.svg?branch=master)](https://travis-ci.org/tataopop/docker-bigdata)
 docker-bigdata is aimed to create a mini cluster for hadoop ecosystem.
+
+
 
 ## Components
 | Component | Version |
