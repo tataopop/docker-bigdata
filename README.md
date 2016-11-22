@@ -14,7 +14,7 @@ docker-bigdata is aimed to create a mini cluster for hadoop ecosystem.
 | oozie | to be added |
 
 ## Build the image
-You can build the image yourself. By editing Dockerfile and start.sh, you can choose which components to be added in your image.
+You can build the image yourself. By editing `Dockerfile` and `start.sh`, you can choose which components to be added in your image.
 ```
 docker build -t docker-bigdata .
 ```
