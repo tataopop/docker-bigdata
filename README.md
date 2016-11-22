@@ -1,5 +1,5 @@
 # docker-bigdata
-docker-bigdata is aimed to create a mini by using docker which can simulate the hadoop ecosystem.
+docker-bigdata is aimed to create a mini cluster for hadoop ecosystem.
 
 ## Components
 | Component | Version |

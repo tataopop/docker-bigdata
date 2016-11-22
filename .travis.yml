@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - docker build -t docker-bigdata:latest .
+  - docker build -t tataopop/docker-bigdata:latest .
 
 script:
   - docker images
