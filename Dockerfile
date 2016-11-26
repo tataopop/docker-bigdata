@@ -45,10 +45,33 @@ COPY hadoop/mapred-site.xml $HADOOP_CONF_DIR/
 
 RUN sed -i 's/${JAVA_HOME}/\/workspace\/java/' /workspace/hadoop/etc/hadoop/hadoop-env.sh
 
+RUN hdfs namenode -format
 
 EXPOSE 50030 50070 8020 9000
 EXPOSE 8088
 
+
+### hive (optional) ###
+RUN curl -s http://archive.apache.org/dist/db/derby/db-derby-10.4.2.0/db-derby-10.4.2.0-bin.tar.gz | tar -xz -C $WORKSPACE
+RUN cd $WORKSPACE && ln -s db-derby-10.4.2.0-bin derby
+ENV DERBY_HOME $WORKSPACE/derby
+ENV PATH $DERBY_HOME/bin:$PATH
+RUN mkdir $DERBY_HOME/data
+
+
+ENV HIVE_VERSION 2.1.0
+RUN curl -s http://www-us.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz | tar -xz -C $WORKSPACE
+RUN cd $WORKSPACE && ln -s apache-hive-$HIVE_VERSION-bin hive
+
+ENV HIVE_HOME $WORKSPACE/hive
+ENV HIVE_CONF_DIR $HIVE_HOME/conf
+ENV PATH $HIVE_HOME/bin:$PATH
+
+RUN cd $HIVE_CONF_DIR && cp hive-env.sh.template hive-env.sh
+RUN cd $HIVE_CONF_DIR && cp hive-default.xml.template hive-site.sh
+
+RUN sed -i 's/jdbc:derby:;databaseName=metastore_db;create=true/jdbc:derby:\/\/localhost:1527\/metastore_db;create=true/' $HIVE_CONF_DIR/hive-site.sh
+RUN schematool -initSchema -dbType derby
 
 ### spark (optional) ###
 
