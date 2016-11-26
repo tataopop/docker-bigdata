@@ -10,7 +10,7 @@ docker-bigdata is aimed to create a mini cluster for hadoop ecosystem.
 | spark | to be added |
 | hbase | to be added |
 | kafak | to be added |
-| hive | to be added |
+| hive | 2.1.0 |
 | oozie | to be added |
 
 ## Build the image

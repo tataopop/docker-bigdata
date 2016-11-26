@@ -69,6 +69,7 @@ ENV PATH $HIVE_HOME/bin:$PATH
 
 RUN cd $HIVE_CONF_DIR && cp hive-env.sh.template hive-env.sh
 RUN cd $HIVE_CONF_DIR && cp hive-default.xml.template hive-site.sh
+COPY hive/jpox.properties $HIVE_CONF_DIR/
 
 RUN sed -i 's/jdbc:derby:;databaseName=metastore_db;create=true/jdbc:derby:\/\/localhost:1527\/metastore_db;create=true/' $HIVE_CONF_DIR/hive-site.sh
 RUN schematool -initSchema -dbType derby
