@@ -60,7 +60,7 @@ RUN mkdir $DERBY_HOME/data
 
 
 ENV HIVE_VERSION 2.1.0
-RUN curl -s http://www-us.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz | tar -xz -C $WORKSPACE
+RUN curl -s https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz | tar -xz -C $WORKSPACE
 RUN cd $WORKSPACE && ln -s apache-hive-$HIVE_VERSION-bin hive
 
 ENV HIVE_HOME $WORKSPACE/hive
